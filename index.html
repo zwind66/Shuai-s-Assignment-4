@@ -43,15 +43,15 @@
         </section>
         <!--score-->  
         <section id="score" class="container col-6 mt-5 text-center font-weight-bold ">
-            <form id="submit-form">
-            <h3 id="your-score"></h3>
-            <label id="initials-label">Enter your initials to save the score:</label>
-            <input type="text" id="initials-field" maxlength="3" placeholder="Enter your initials" />
-            <button id="submit-btn">Submit</button>
+            <h2 class="font-weight-bold pt-2 pb-3 m-2">Your final score is <span id="finalScore"></span> !</h2>
+            <form>
+                <label id="initials-label">Enter your initials to save the score:</label>
+                <input type="text" id="initialInput" maxlength="3" placeholder="Enter your initials" />
+                <button id="submit-btn" class="btn btn-info">Submit</button>
             </form>
         </section>
         <!--highscores-->   
-        <section id="highscores" class="container col-6 mt-5 text-center ">
+        <section id="highScores" class="container col-6 mt-5 text-center ">
             <h2 class="font-weight-bold pt-2 pb-3 mb-2">High Scores</h2>                   
             <div id="listOfHighScores" class="list-group list-group-flush pt-2 pb-3 mb-2"></div>
                 <button type="submit" class="btn btn-info mt-3 mr-3" id="goBackBtn">Go Back</button>

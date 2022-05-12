@@ -27,30 +27,33 @@ var questions = [
     },
 ];
 
-//getElementById
+//get element by Id
 var timer = $("#timer");
 var timesUp = $("#timesUp");
 
-var startDiv = $("#start");
-var startQuizBtn = $("#start-quiz-button");
+var start = $("#start");
+var startBtn = $("#start-btn");
 
-var questionDiv = $("#questionDiv");
-var questionTitle = $("#questionTitle");
+var questions = $("#questions");
 var choiceA = $("#0");
 var choiceB = $("#1");
 var choiceC = $("#2");
 var choiceD = $("#3");
 var answerCheck = $("#answerCheck");
 
-var summary = $("#summary");
-var submitInitialBtn = $("#submitInitialBtn");
+var score = $("#score");
+var submitBtn = $("#submit-btn");
 var initialInput = $("#initialInput");
-var everything = $("#everything");
-
-var highScoreSection = $("#highScoreSection");
 var finalScore = $("#finalScore");
 
-var goBackBtn = $("#goBackBtn");
-var clearHighScoreBtn = $("#clearHighScoreBtn"); 
+var Highscores = $("#Highscores");
 var viewHighScore = $("#viewHighScore");
 var listOfHighScores = $("#listOfHighScores");
+var goBackBtn = $("#goBackBtn");
+var clearHighScoreBtn = $("#clearHighScoreBtn"); 
+
+// other variables
+var correctAns = 0;
+var questionNum = 0;
+var scoreResult;
+var questionIndex = 0;
