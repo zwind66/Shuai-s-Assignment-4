@@ -41,6 +41,7 @@ var choiceA = $("#0");
 var choiceB = $("#1");
 var choiceC = $("#2");
 var choiceD = $("#3");
+var lineBreak = $("#lineBreak");
 var answerCheck = $("#answerCheck");
 
 var score = $("#score");
@@ -58,7 +59,6 @@ var clearHighScoreBtn = $("#clearHighScoreBtn");
 var correctAns = 0;
 var questionNum = 0;
 var scoreResult;
-var questionIndex = 0;
 
 //Start page
 function newQuiz() {
@@ -93,8 +93,45 @@ function showQuiz() {
     choiceD.text(questionsList[questionIndex].choices[3]);
 }
 
+//Show right or wrong answers
+function checkAnswer(answer) {
+    lineBreak.removeClass("d-none");
+    answerCheck.removeClass("d-none");
 
+    if (questionsList[questionIndex].answer === questionsList[questionIndex].choices[answer]) {
+        // correct answer, add 1 score to final score
+        correctAns += 5;
+        // console.log(correctAns);
+        answerCheck.text("Correct!");
+    } else {
+        // wrong answer, deduct 10 second from timer
+        totalTime -= 10;
+        timeLeft.text(totalTime);
+        answerCheck.text("Wrong! The correct answer is: " + questionsList[questionIndex].answer);
+    }
+
+    questionIndex ++;
+    // repeat with the rest of questions 
+    if (questionIndex < questionsList.length) {
+        showQuiz();
+    } else {
+        // if no more question, run game over function
+        gameOver();
+    }
+}
+
+function chooseA() { checkAnswer(0); }
+
+function chooseB() { checkAnswer(1); }
+
+function chooseC() { checkAnswer(2); }
+
+function chooseD() { checkAnswer(3); }
 
 //Listeners
-startBtn.on('click', newQuiz);
-console.log(timeLeft.textContent)
+startBtn.on("click", newQuiz);
+choiceA.on("click", chooseA);
+choiceB.on("click", chooseB);
+choiceC.on("click", chooseC);
+choiceD.on("click", chooseD);
+console.log(questionIndex)
