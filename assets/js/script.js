@@ -43,6 +43,7 @@ var choiceC = $("#2");
 var choiceD = $("#3");
 var lineBreak = $("#lineBreak");
 var answerCheck = $("#answerCheck");
+var next = $("#next");
 
 var score = $("#score");
 var submitBtn = $("#submit-btn");
@@ -58,6 +59,7 @@ var clearHighScoreBtn = $("#clearHighScoreBtn");
 // other variables
 var correctAns = 0;
 var questionNum = 0;
+var questionIndex = 0;
 var scoreResult;
 
 //Start page
@@ -97,19 +99,23 @@ function showQuiz() {
 function checkAnswer(answer) {
     lineBreak.removeClass("d-none");
     answerCheck.removeClass("d-none");
+    next.removeClass("d-none");
 
     if (questionsList[questionIndex].answer === questionsList[questionIndex].choices[answer]) {
         // correct answer, add 1 score to final score
-        correctAns += 5;
+        correctAns += 20;
         // console.log(correctAns);
         answerCheck.text("Correct!");
     } else {
         // wrong answer, deduct 10 second from timer
         totalTime -= 10;
+        correctAns -=5;
         timeLeft.text(totalTime);
         answerCheck.text("Wrong! The correct answer is: " + questionsList[questionIndex].answer);
     }
+}
 
+function nextone() { 
     questionIndex ++;
     // repeat with the rest of questions 
     if (questionIndex < questionsList.length) {
@@ -118,6 +124,10 @@ function checkAnswer(answer) {
         // if no more question, run game over function
         gameOver();
     }
+    
+    lineBreak.addClass("d-none");
+    answerCheck.addClass("d-none");
+    next.addClass("d-none");
 }
 
 function chooseA() { checkAnswer(0); }
@@ -128,10 +138,22 @@ function chooseC() { checkAnswer(2); }
 
 function chooseD() { checkAnswer(3); }
 
+//game over
+function gameOver() {
+    score.removeClass("d-none") ;
+    questions.addClass("d-none");
+    timer.addClass("d-none");
+    timesUp.removeClass("d-none") ;
+
+    // show final score
+    finalScore.text(correctAns);
+}
+
 //Listeners
 startBtn.on("click", newQuiz);
 choiceA.on("click", chooseA);
 choiceB.on("click", chooseB);
 choiceC.on("click", chooseC);
 choiceD.on("click", chooseD);
-console.log(questionIndex)
+next.on("click",nextone);
+console.log()
