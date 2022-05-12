@@ -12,23 +12,23 @@
 
     <body>
         <!--header-->
-        <header class="container pt-3 row col-12 justify-content-around">
-            <div id="scores" class="text-primary">
+        <header class="container mt-3 row col-12 justify-content-around">
+            <div id="scores" class="h4 text-primary">
                 <a id="highscores-link">View high scores</a>
             </div>
-            <div id="timer" class="">
+            <div id="timer" class="h4">
                 Time: 75
             </div>
         </header>  
         <!--start-->
-        <section id="start" class="start-quiz">
-            <h1> Coding Quiz Challenge</h1>
-            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds!</p>
-            <button type="button" id="start-btn" class="start-btn">Start Quiz</button>
+        <section id="start" class="container col-6 mt-5 text-center">
+            <h1 class="h1 mb-5 font-weight-bold"> Coding Quiz Challenge</h1>
+            <p class="h5 mb-5">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds!</p>
+            <button type="button" id="start-btn" class="btn btn-primary">Start Quiz</button>
         </section>
         <!--questions-->
-        <section id="questions" class="hide">
-            <h1 id="question">Question</h1>
+        <section id="questions" class="d-none">
+            <h1 class="h1 ">Question</h1>
             <div id="answer-btn" class="answer-btn">
                 <button class="btn">Answer 1</button>
                 <button class="btn">Answer 2</button>
@@ -41,7 +41,7 @@
             </div>
         </section>
         <!--score-->  
-        <section id="score" class="hide">
+        <section id="score" class="d-none">
             <form id="submit-form">
             <h3 id="your-score"></h3>
             <label id="initials-label">Enter your initials to save the score:</label>
@@ -50,7 +50,7 @@
             </form>
         </section>
         <!--highscores-->   
-        <section id="highscores" class="highscores hide">
+        <section id="highscores" class="d-none">
             <div id="high-scores">
             <h1 class="centered">Leaderboard</h1>
             <div id="highscore" class="highscore highscore-list">
