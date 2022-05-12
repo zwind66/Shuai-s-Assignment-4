@@ -1,5 +1,5 @@
 //Questions
-var questions = [
+var questionsList = [
     {
         question: "What is considered to be the most popular programming language in the world?",
         choices: ["a. <HTML>", "b. <Ruby>", "c. <Swift>", "d. <JavaScript>"],
@@ -36,6 +36,7 @@ var start = $("#start");
 var startBtn = $("#start-btn");
 
 var questions = $("#questions");
+var question = $("#question");
 var choiceA = $("#0");
 var choiceB = $("#1");
 var choiceC = $("#2");
@@ -81,9 +82,17 @@ function newQuiz() {
     },1000);
 
     showQuiz();
-};
+}
 
 //Questions page
+function showQuiz() {
+    question.text(questionsList[questionIndex].question) ;
+    choiceA.text(questionsList[questionIndex].choices[0]);
+    choiceB.text(questionsList[questionIndex].choices[1]);
+    choiceC.text(questionsList[questionIndex].choices[2]);
+    choiceD.text(questionsList[questionIndex].choices[3]);
+}
+
 
 
 //Listeners
