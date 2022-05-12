@@ -14,11 +14,12 @@
         <!--header-->
         <header class="container mt-3 row col-12 justify-content-around">
             <div id="scores" class="h4 text-primary">
-                <a id="highscores-link">View high scores</a>
+                <a id="viewHighScore">View high scores</a>
             </div>
             <div id="timer" class="h4">
                 Time: 75
             </div>
+            <div id="timesUp" class="col text-right d-none">Time's Up!</div>
         </header>  
         <!--start-->
         <section id="start" class="container col-6 mt-5 text-center">
@@ -27,19 +28,21 @@
             <button type="button" id="start-btn" class="btn btn-primary">Start Quiz</button>
         </section>
         <!--questions-->
-        <section id="questions" class="">
+        <section id="questions" class="container col-6 mt-5 text-center">
             <h1 class="h1 mb-4 justify-content-center font-weight-bold">Question</h1>
             <div id="answer-btn" class="pl-5 pt-2 pb-3 m-2 justify-content-center">
-                <button class="btn btn-primary btn-lg mb-3" id="0">Answer 1</button>
-                <button class="btn btn-primary btn-lg mb-3" id="1">Answer 2</button>
-                <button class="btn btn-primary btn-lg mb-3" id="2">Answer 3</button>
-                <button class="btn btn-primary btn-lg mb-3" id="3">Answer 4</button>
+                <button class="btn btn-primary btn-lg mb-3 text-left" id="0">Answer 1</button>
+                <button class="btn btn-primary btn-lg mb-3 text-left" id="1">Answer 2</button>
+                <button class="btn btn-primary btn-lg mb-3 text-left" id="2">Answer 3</button>
+                <button class="btn btn-primary btn-lg mb-3 text-left" id="3">Answer 4</button>
+                <hr id="lineBreak" class="mt-4 d-none">
+                <p id="answerCheck" class="d-none"></p>
             </div>
             <h2 id="check-answer" class="correct-wrong hide"></h2>
             <div class="controls"></div>
         </section>
         <!--score-->  
-        <section id="score" class="d-none">
+        <section id="score" class="container col-6 mt-5 text-center font-weight-bold ">
             <form id="submit-form">
             <h3 id="your-score"></h3>
             <label id="initials-label">Enter your initials to save the score:</label>
@@ -48,12 +51,16 @@
             </form>
         </section>
         <!--highscores-->   
-        <section id="highscores" class="pl-5 ml-4 pt-5 justify-content-center font-weight-bold ">
+        <section id="highscores" class="container col-6 mt-5 text-center ">
             <h2 class="font-weight-bold pt-2 pb-3 mb-2">High Scores</h2>                   
             <div id="listOfHighScores" class="list-group list-group-flush pt-2 pb-3 mb-2"></div>
                 <button type="submit" class="btn btn-info mt-3 mr-3" id="goBackBtn">Go Back</button>
                 <button type="submit" class="btn btn-info mt-3" id="clearHighScoreBtn">Clear High Scores</button>
             </div> 
         </section>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script src="./assets/js/script.js"></script>
     </body>
 </html>
