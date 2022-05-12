@@ -27,8 +27,9 @@ var questions = [
     },
 ];
 
-//get element by Id
+//Get element by Id
 var timer = $("#timer");
+var timeLeft =$("#timeLeft")
 var timesUp = $("#timesUp");
 
 var start = $("#start");
@@ -57,3 +58,34 @@ var correctAns = 0;
 var questionNum = 0;
 var scoreResult;
 var questionIndex = 0;
+
+//Start page
+function newQuiz() {
+    questionIndex = 0;
+    totalTime = 75;
+    timeLeft.text(totalTime);
+    initialInput.textContent = "";
+
+    start.addClass("d-none");
+    questions.removeClass("d-none");
+
+    var startTimer = setInterval(function() {
+        totalTime--;
+        timeLeft.text(totalTime);
+        if(totalTime <= 0) {
+            clearInterval(startTimer);
+            if (questionIndex < questions.length - 1) {
+                gameOver();
+            }
+        }
+    },1000);
+
+    showQuiz();
+};
+
+//Questions page
+
+
+//Listeners
+startBtn.on('click', newQuiz);
+console.log(timeLeft.textContent)
