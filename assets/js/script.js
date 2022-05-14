@@ -165,34 +165,29 @@ function saveScore(event) {
         return;
     }
      // store scores into local storage
-    var savedHighScores = localStorage.getItem("high scores");
-    var scoresArray= [];
+     var savedHighScores = localStorage.getItem("high scores");
+    var scoresArray;
+
+    if (savedHighScores === null) {
+        scoresArray = [];
+    } else {
+        scoresArray = JSON.parse(savedHighScores)
+    }
+
     var userScore = {
         initials: initialInput,
-        score: correctAns,
+        score: correctAns
     };
 
+    console.log(userScore);
     scoresArray.push(userScore);
 
-    localStorage.setItem("high scores", JSON.stringify(scoresArray));
-
-    var savedHighScores = localStorage.getItem("high scores");
-
-    // check if there is any in local storage
-    if (savedHighScores === null) {
-        return;
-    }
-
-    var storedHighScores = JSON.parse(savedHighScores);
-
-    for (i = 0; i < storedHighScores.length; i++) {
-        var eachNewHighScore = document.createElement("p");
-        eachNewHighScore.innerHTML =  storedHighScores[i].initials + ": " + storedHighScores[i].score;
-        listOfHighScores.append(eachNewHighScore);
-    }
-
+    // stringify array in order to store in local
+    var scoresArrayString = JSON.stringify(scoresArray);
+    window.localStorage.setItem("high scores", scoresArrayString);
+    
     // show current highscores
-    showHighScores();  
+    showHighScores(); 
 }
 
 //show high scores
@@ -206,6 +201,22 @@ function showHighScores() {
     questions.addClass("d-none");
     
     correctAns = 0;
+
+    var savedHighScores = localStorage.getItem("high scores");
+
+    // check if there is any in local storage
+    if (savedHighScores === null) {
+        return;
+    }
+    console.log(savedHighScores);
+
+    var storedHighScores = JSON.parse(savedHighScores);
+
+    for (i = 0; i < storedHighScores.length; i++) {
+        var eachNewHighScore = document.createElement("p");
+        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score;
+        listOfHighScores.append(eachNewHighScore);
+    }
 }
 
 //fo back
@@ -215,6 +226,7 @@ function goBack() {
     viewHighScore.removeClass("d-none");
     start.removeClass("d-none");
     highScores.addClass("d-none");
+    listOfHighScores.empty();
 }
 //Listeners
 startBtn.on("click", newQuiz);
@@ -226,6 +238,7 @@ next.on("click",nextone);
 submitBtn.on("click", function(event){
     saveScore(event);
 });
+
 goBackBtn.on("click", goBack);
 viewHighScore.on("click",showHighScores);
 
