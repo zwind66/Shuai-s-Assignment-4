@@ -1,4 +1,4 @@
-//Questions
+// questions
 var questionsList = [
     {
         question: "What is considered to be the most popular programming language in the world?",
@@ -27,14 +27,12 @@ var questionsList = [
     },
 ];
 
-//Get element by Id
+// get element by Id
 var timer = $("#timer");
 var timeLeft =$("#timeLeft")
 var timesUp = $("#timesUp");
-
 var start = $("#start");
 var startBtn = $("#start-btn");
-
 var questions = $("#questions");
 var question = $("#question");
 var answerBtn = $("#answer-btn");
@@ -45,11 +43,9 @@ var choiceD = $("#3");
 var lineBreak = $("#lineBreak");
 var answerCheck = $("#answerCheck");
 var next = $("#next");
-
 var score = $("#score");
 var submitBtn = $("#submit-btn");
 var finalScore = $("#finalScore");
-
 var highScores = $("#highScores");
 var viewHighScore = $("#viewHighScore");
 var listOfHighScores = $("#listOfHighScores");
@@ -62,7 +58,7 @@ var questionNum = 0;
 var questionIndex = 0;
 var scoreResult;
 
-//Start page
+// start page
 function newQuiz() {
     questionIndex = 0;
     totalTime = 75;
@@ -84,7 +80,7 @@ function newQuiz() {
     showQuiz();
 }
 
-//Questions page
+// questions page
 function showQuiz() {
     question.text(questionsList[questionIndex].question) ;
     choiceA.text(questionsList[questionIndex].choices[0]);
@@ -93,7 +89,7 @@ function showQuiz() {
     choiceD.text(questionsList[questionIndex].choices[3]);
 }
 
-//Show right or wrong answers
+// show right or wrong answers
 function checkAnswer(answer) {
     question.addClass("d-none");
     answerBtn.addClass("d-none");
@@ -114,7 +110,7 @@ function checkAnswer(answer) {
     }
 }
 
-//Next question
+// next question
 function nextone() { 
     questionIndex ++;
     // repeat with the rest of questions 
@@ -159,7 +155,7 @@ function saveScore(event) {
     
     var initialInput = $("#initialInput").val();
 
-    // Blank initial
+    // blank initial
     if (initialInput.length == 0){
         alert("Please enter your initials!");
         return;
@@ -190,7 +186,7 @@ function saveScore(event) {
     showHighScores(); 
 }
 
-//show high scores
+// show high scores
 function showHighScores() {
     score.addClass("d-none");
     start.addClass("d-none");
@@ -219,7 +215,7 @@ function showHighScores() {
     }
 }
 
-//fo back
+// go back
 function goBack() {
     timer.removeClass("d-none");
     timesUp.addClass("d-none");
@@ -228,7 +224,8 @@ function goBack() {
     highScores.addClass("d-none");
     listOfHighScores.empty();
 }
-//Listeners
+
+// listeners
 startBtn.on("click", newQuiz);
 choiceA.on("click", chooseA);
 choiceB.on("click", chooseB);
