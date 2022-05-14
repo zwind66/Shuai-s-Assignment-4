@@ -166,40 +166,15 @@ function saveScore(event) {
     }
      // store scores into local storage
     var savedHighScores = localStorage.getItem("high scores");
-    var scoresArray;
-
-    if (savedHighScores === null) {
-        scoresArray = [];
-    } else {
-        scoresArray = JSON.parse(savedHighScores)
-    }
-
+    var scoresArray= [];
     var userScore = {
         initials: initialInput,
-        score: finalScore.text,
+        score: correctAns,
     };
 
     scoresArray.push(userScore);
 
-    localStorage.setItem('high Scores', JSON.stringify(scoresArray));
-
-    // show current highscores
-    showHighScores();
-    
-}
-
-//show high scores
-function showHighScores() {
-    score.addClass("d-none");
-    start.addClass("d-none");
-    highScores.removeClass("d-none");
-    viewHighScore.addClass("d-none");
-    timer.addClass("d-none");
-    timerUP.addClass("d-none");
-    questions.addClass("d-none");
-    
-
-    correctAns = 0;
+    localStorage.setItem("high scores", JSON.stringify(scoresArray));
 
     var savedHighScores = localStorage.getItem("high scores");
 
@@ -212,9 +187,25 @@ function showHighScores() {
 
     for (i = 0; i < storedHighScores.length; i++) {
         var eachNewHighScore = document.createElement("p");
-        eachNewHighScore.innerHTML = storedHighScores[i].initials + ": " + storedHighScores[i].score;
-        listOfHighScores.appendChild(eachNewHighScore);
+        eachNewHighScore.innerHTML =  storedHighScores[i].initials + ": " + storedHighScores[i].score;
+        listOfHighScores.append(eachNewHighScore);
     }
+
+    // show current highscores
+    showHighScores();  
+}
+
+//show high scores
+function showHighScores() {
+    score.addClass("d-none");
+    start.addClass("d-none");
+    timesUp.addClass("d-none");
+    highScores.removeClass("d-none");
+    viewHighScore.addClass("d-none");
+    timer.addClass("d-none");
+    questions.addClass("d-none");
+    
+    correctAns = 0;
 }
 
 //fo back
@@ -237,7 +228,8 @@ submitBtn.on("click", function(event){
 });
 goBackBtn.on("click", goBack);
 viewHighScore.on("click",showHighScores);
+
 clearHighScoreBtn.on("click", function(){
     window.localStorage.removeItem("high scores");
-    listOfHighScores.innerHTML = "High Scores Cleared!";
+    listOfHighScores.empty();
 });
